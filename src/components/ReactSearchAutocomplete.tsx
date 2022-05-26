@@ -26,7 +26,9 @@ export interface ReactSearchAutocompleteProps<T> {
   styling?: DefaultTheme
   resultStringKeyName?: string
   inputSearchString?: string
-  formatResult?: Function
+  formatResult?: Function,
+  CustomSearchIcon?: Function
+  CustomClearIcon?: Function
 }
 
 export default function ReactSearchAutocomplete<T>({
@@ -46,8 +48,11 @@ export default function ReactSearchAutocomplete<T>({
   styling = {},
   resultStringKeyName = 'name',
   inputSearchString = '',
-  formatResult
+  formatResult,
+  CustomSearchIcon,
+  CustomClearIcon
 }: ReactSearchAutocompleteProps<T>) {
+
   const theme = { ...defaultTheme, ...styling }
   const options = { ...defaultFuseOptions, ...fuseOptions }
 
@@ -162,6 +167,8 @@ export default function ReactSearchAutocomplete<T>({
             showIcon={showIcon}
             showClear={showClear}
             setHighlightedItem={handleSetHighligthedItem}
+            CustomSearchIcon={CustomSearchIcon}
+            CustomClearIcon={CustomClearIcon}
           />
           <Results
             results={results}
@@ -173,6 +180,7 @@ export default function ReactSearchAutocomplete<T>({
             formatResult={formatResult}
             highlightedItem={highlightedItem}
             setHighlightedItem={handleSetHighligthedItem}
+            CustomSearchIcon={CustomSearchIcon}
           />
         </div>
       </StyledReactSearchAutocomplete>

@@ -1,5 +1,8 @@
 import Fuse from 'fuse.js'
 
+import { SearchIcon } from '../components/SearchIcon'
+import { ClearIcon } from '../components/ClearIcon'
+
 export interface DefaultTheme {
   height?: string
   border?: string
@@ -10,12 +13,15 @@ export interface DefaultTheme {
   color?: string
   fontSize?: string
   fontFamily?: string
-  iconColor?: string
+  searchIconColor?: string
+  clearIconColor?: string
   lineColor?: string
   placeholderColor?: string
   zIndex?: number
   clearIconMargin?: string
-  searchIconMargin?: string
+  searchIconMargin?: string,
+  CustomSearchIcon?: Function,
+  CustomClearIcon?: Function
 }
 
 const defaultTheme: DefaultTheme = {
@@ -28,12 +34,15 @@ const defaultTheme: DefaultTheme = {
   color: '#212121',
   fontSize: '16px',
   fontFamily: 'Arial',
-  iconColor: 'grey',
+  searchIconColor: 'grey',
+  clearIconColor: 'grey',
   lineColor: 'rgb(232, 234, 237)',
   placeholderColor: 'grey',
   zIndex: 0,
   clearIconMargin: '3px 14px 0 0',
-  searchIconMargin: '0 0 0 16px'
+  searchIconMargin: '0 0 0 16px',
+  CustomSearchIcon: SearchIcon,
+  CustomClearIcon: ClearIcon
 }
 
 const defaultFuseOptions: Fuse.IFuseOptions<any> = {

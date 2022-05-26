@@ -12,7 +12,8 @@ export interface ResultsProps<T> {
   formatResult?: Function
   showIcon: boolean
   maxResults: number
-  resultStringKeyName: string
+  resultStringKeyName: string,
+  CustomSearchIcon?: Function
 }
 
 export default function Results<T>({
@@ -24,7 +25,8 @@ export default function Results<T>({
   resultStringKeyName = 'name',
   highlightedItem,
   setHighlightedItem,
-  formatResult
+  formatResult,
+  CustomSearchIcon
 }: ResultsProps<T>) {
   type WithStringKeyName = T & Record<string, unknown>
 
@@ -54,7 +56,7 @@ export default function Results<T>({
             onMouseDown={() => handleClick(result)}
             onClick={() => handleClick(result)}
           >
-            <SearchIcon showIcon={showIcon} />
+            <SearchIcon showIcon={showIcon} CustomIcon={CustomSearchIcon} />
             <div className="ellipsis" title={result[resultStringKeyName] as string}>
               {formatResultWithKey(result)}
             </div>

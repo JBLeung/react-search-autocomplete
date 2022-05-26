@@ -13,7 +13,9 @@ interface SearchInputProps {
   onClear: Function
   placeholder: string
   showIcon: boolean
-  showClear: boolean
+  showClear: boolean,
+  CustomSearchIcon?: Function,
+  CustomClearIcon?: Function
 }
 
 export default function SearchInput({
@@ -26,8 +28,11 @@ export default function SearchInput({
   onClear,
   placeholder,
   showIcon = true,
-  showClear = true
+  showClear = true,
+  CustomSearchIcon,
+  CustomClearIcon
 }: SearchInputProps) {
+
   const ref = useRef<HTMLInputElement>(null)
 
   let manualFocus = true
@@ -44,7 +49,7 @@ export default function SearchInput({
 
   return (
     <StyledSearchInput>
-      <SearchIcon showIcon={showIcon} />
+      <SearchIcon showIcon={showIcon} CustomIcon={CustomSearchIcon} />
       <input
         ref={ref}
         spellCheck={false}
@@ -62,6 +67,7 @@ export default function SearchInput({
         searchString={searchString}
         onClear={onClear}
         setFocus={setFocus}
+        CustomIcon={CustomClearIcon}
       />
     </StyledSearchInput>
   )
